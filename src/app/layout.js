@@ -1,5 +1,6 @@
 import "../styles/globals.css";
-import CactusNavbar from "@/components/CactusNavbar";
+import Navbar from "@/components/navbar";
+import CursorLight from "@/components/CursorFollower";
 
 export const metadata = {
   title: "Ibrahim Al Omran",
@@ -15,19 +16,24 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",  
-  themeColor: "#150901",  
+  themeColor: "#030612",  
 }
 
 
 export default function RootLayout({ children }) {
   return (
-  <html lang="en" className="cactus-theme h-full">
-      <body className="cactus-theme h-full m-0 p-0" style={{ 
-        background: 'linear-gradient(135deg, #150901 0%, #291203 100%)',
-        backgroundAttachment: 'fixed'
+  <html lang="en" className="dark h-full">
+      <body className="h-full m-0 p-0 overflow-x-hidden" style={{ 
+        background: 'linear-gradient(135deg, #030612 0%, #070F29 100%)',
+        minHeight: '100vh',
+        minHeight: '-webkit-fill-available'
       }}>
-        <div className="min-h-screen">
-          <CactusNavbar />
+        <CursorLight />
+        <div className="min-h-screen relative" style={{
+          minHeight: '100vh',
+          minHeight: '-webkit-fill-available'
+        }}>
+          <Navbar />
           {children}
         </div>
       </body>

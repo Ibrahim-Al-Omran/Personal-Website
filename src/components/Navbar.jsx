@@ -28,32 +28,32 @@ export default function Navbar() {
 						<Link
 							href="/"
 							onClick={() => setOpen(false)}
-							className={`flex items-center space-x-3 px-3 py-2 text-white hover:bg-white/10 rounded-md transition-all duration-200 transform ${
+							className={`flex items-center justify-center w-10 h-10 text-white hover:bg-white/10 rounded-md transition-all duration-200 transform ${
 								open ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
 							}`}
 							style={{ transitionDelay: open ? '100ms' : '0ms' }}
+							title="Home"
 						>
 							<Home className="h-5 w-5" />
-							<span className="text-sm font-medium">Home</span>
 						</Link>
 						<Link
 							href="/projects"
 							onClick={() => setOpen(false)}
-							className={`flex items-center space-x-3 px-3 py-2 text-white hover:bg-white/10 rounded-md transition-all duration-200 transform ${
+							className={`flex items-center justify-center w-10 h-10 text-white hover:bg-white/10 rounded-md transition-all duration-200 transform ${
 								open ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
 							}`}
 							style={{ transitionDelay: open ? '200ms' : '0ms' }}
+							title="Projects"
 						>
 							<FolderOpen className="h-5 w-5" />
-							<span className="text-sm font-medium">Projects</span>
 						</Link>
 					</nav>
 				</div>
 			</div>
 
-			{/* Backdrop */}
-			<div className={`fixed inset-0 z-30 bg-black/20 transition-opacity duration-300 ${
-				open ? 'opacity-100' : 'opacity-0 pointer-events-none'
+			{/* Backdrop with immediate blur */}
+			<div className={`fixed inset-0 z-30 transition-all duration-300 ${
+				open ? 'bg-black/20 backdrop-blur-sm' : 'bg-transparent pointer-events-none'
 			}`}
 				onClick={() => setOpen(false)}
 			/>

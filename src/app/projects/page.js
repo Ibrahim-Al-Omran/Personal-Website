@@ -1,4 +1,4 @@
-import CactusProjectCard from "@/components/CactusProjectCard";
+import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
 
 const projects = [
@@ -69,10 +69,8 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <main className="max-w-5xl mx-auto px-4 py-10 space-y-8 pt-24">
-      <h1 className="cactus-heading text-4xl font-bold animate-fade-in-up text-center">
-        My Projects
-      </h1>
+    <main className="max-w-5xl mx-auto px-4 py-10 space-y-8">
+      <h1 className="text-3xl font-bold animate-fade-in-up">My Projects</h1>
       <div className="projects-grid">
         {projects.map((proj, index) => (
           <div
@@ -80,7 +78,7 @@ export default function ProjectsPage() {
             className="animate-fade-in-up"
             style={{ animationDelay: `${index * 150}ms` }}
           >
-            <CactusProjectCard
+            <ProjectCard
               title={proj.title}
               description={proj.description}
               tags={proj.tech}
