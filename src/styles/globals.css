@@ -1,6 +1,44 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Reset margins and padding for html and body */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Import Cactus Theme */
+@import './cactus-theme.css';
+
+/* Global Cactus Cursor */
+* {
+  cursor: url('/cursors/cactus-cursor.svg'), auto;
+}
+
+button, a, [role="button"] {
+  cursor: url('/cursors/cactus-pointer.svg'), pointer;
+}
+
+/* Cactus Theme Body */
+html {
+  background: linear-gradient(135deg, #150901 0%, #291203 100%) !important;
+  background-attachment: fixed;
+  font-family: 'Comic Neue', 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #150901 0%, #291203 100%) !important;
+  background-attachment: fixed;
+  font-family: 'Comic Neue', 'Segoe UI', system-ui, sans-serif;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -79,12 +117,12 @@
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
+  --background: linear-gradient(135deg, #030612 0%, #070F29 100%);
+  --foreground: #E6E6E6;
   --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
+  --card-foreground: #E6E6E6;
   --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
+  --popover-foreground: #E6E6E6;
   --primary: oklch(0.929 0.013 255.508);
   --primary-foreground: oklch(0.208 0.042 265.755);
   --secondary: oklch(0.279 0.041 260.031);
@@ -110,6 +148,8 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+  --projectcard-primary: #112267;
+  --projectcard-secondary: #132673;
 }
 
 @layer base {
@@ -117,6 +157,81 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    /* Use the --background variable as the full background (allows gradients).
+       Fall back to the color variable if a solid color is used. */
+  background: var(--background);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  color: var(--foreground);
+  min-height: 100vh;
   }
+  .project-card {
+  /* vertical gradient from primary to secondary defined in .dark */
+  background: linear-gradient(180deg, var(--projectcard-primary) 0%, var(--projectcard-secondary) 100%);
+  color: var(--card-foreground);
+  border: 1px solid rgba(255,255,255,0.08); /* subtle solid border */
+  backdrop-filter: blur(6px);               /* optional glassy blur */
+  -webkit-backdrop-filter: blur(6px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* Make all cards same height */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  }
+
+  /* Ensure grid items stretch to same height */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Page load animations */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.4s ease-out forwards;
+    opacity: 0;
+  }
+  @supports (padding: env(safe-area-inset-top)) {
+    body {
+      padding-top: env(safe-area-inset-top);
+      background-color: transparent; /* make sure gradient shows through */
+    }
+  }
+
 }

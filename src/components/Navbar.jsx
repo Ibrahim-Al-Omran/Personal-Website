@@ -2,69 +2,61 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-];
+import { Home, FolderOpen, Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(false);
 
-  return (
-    <header className="w-full border-b bg-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold">
-          Ibrs
-        </Link>
+	return (
+		<>
+			{/* Floating Toggle Button */}
+			<button
+				onClick={() => setOpen(!open)}
+				className="fixed top-4 right-4 z-50 w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all"
+			>
+				{open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+			</button>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium hover:text-blue-600 transition"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+			{/* Popup Navigation */}
+			<div className={`fixed top-20 right-4 z-40 transition-all duration-300 ease-out transform ${
+				open 
+					? 'opacity-100 translate-y-0 scale-100' 
+					: 'opacity-0 -translate-y-4 scale-95 pointer-events-none'
+			}`}>
+				<div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4 shadow-lg">
+					<nav className="flex flex-col space-y-3">
+						<Link
+							href="/"
+							onClick={() => setOpen(false)}
+							className={`flex items-center space-x-3 px-3 py-2 text-white hover:bg-white/10 rounded-md transition-all duration-200 transform ${
+								open ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
+							}`}
+							style={{ transitionDelay: open ? '100ms' : '0ms' }}
+						>
+							<Home className="h-5 w-5" />
+							<span className="text-sm font-medium">Home</span>
+						</Link>
+						<Link
+							href="/projects"
+							onClick={() => setOpen(false)}
+							className={`flex items-center space-x-3 px-3 py-2 text-white hover:bg-white/10 rounded-md transition-all duration-200 transform ${
+								open ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'
+							}`}
+							style={{ transitionDelay: open ? '200ms' : '0ms' }}
+						>
+							<FolderOpen className="h-5 w-5" />
+							<span className="text-sm font-medium">Projects</span>
+						</Link>
+					</nav>
+				</div>
+			</div>
 
-        {/* Mobile Menu Button */}
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="w-64">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-lg font-bold">Menu</span>
-              <Button variant="ghost" size="icon" onClick={() => setOpen(false)}>
-                <X className="h-5 w-5" />
-              </Button>
-            </div>
-            <nav className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium hover:text-blue-600"
-                  onClick={() => setOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </SheetContent>
-        </Sheet>
-      </div>
-    </header>
-  );
+			{/* Backdrop */}
+			<div className={`fixed inset-0 z-30 bg-black/20 transition-opacity duration-300 ${
+				open ? 'opacity-100' : 'opacity-0 pointer-events-none'
+			}`}
+				onClick={() => setOpen(false)}
+			/>
+		</>
+	);
 }
