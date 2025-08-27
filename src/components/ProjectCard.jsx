@@ -34,7 +34,7 @@ export default function ProjectCard({ title, description, tags = [], href, date,
             <Link
               href={link}
               target="_blank"
-              className="text-xs px-3 py-1 bg-white/10 border border-white/20 rounded-md hover:bg-white/20 transition text-center"
+              className="text-xs px-3 py-1 bg-white/10 border border-white/20 rounded-md hover:bg-white/20 transition text-center flex items-center justify-center whitespace-nowrap"
             >
               Live Website
             </Link>
@@ -43,7 +43,7 @@ export default function ProjectCard({ title, description, tags = [], href, date,
             <Link
               href={repo}
               target="_blank"
-              className="text-xs px-3 py-1 bg-white/10 border border-white/20 rounded-md hover:bg-white/20 transition text-center"
+              className="text-xs px-3 py-1 bg-white/10 border border-white/20 rounded-md hover:bg-white/20 transition text-center flex items-center justify-center whitespace-nowrap"
             >
               Repo
             </Link>
