@@ -46,7 +46,7 @@ export const metadata = {
     siteName: "Ibrahim Al Omran Portfolio",
     images: [
       {
-        url: "https://ibrahimalomran.com/ia-logo.png", // ✅ updated logo
+        url: "https://ibrahimalomran.com/ia_logo.png", // ✅ updated logo
         width: 1200,
         height: 630,
         alt: "Ibrahim Al Omran Logo",
@@ -57,7 +57,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Ibrahim Al Omran - Software Engineering Student",
     description: "19-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects.",
-    images: ["https://ibrahimalomran.com/ia-logo.png"], // ✅ updated logo
+    images: ["https://ibrahimalomran.com/ia_logo.png"], // ✅ updated logo
   },
   metadataBase: new URL("https://ibrahimalomran.com"),
   alternates: {
