@@ -66,10 +66,11 @@ export const metadata = {
   category: "technology",
   icons: {
     icon: [
+      { url: "/ia_logo_512.png", sizes: "512x512", type: "image/png" },
       { url: "/favicon.ico" },
       { url: "/ia_logo.png", sizes: "any", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: "/ia_logo_512.png",
   },
   other: {
     "apple-mobile-web-app-capable": "yes",
