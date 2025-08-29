@@ -2,10 +2,6 @@
 import Link from "next/link";
 import { Linkedin, Github, Mail } from "lucide-react";
 
-export const metadata = {
-  title: "Ibrahim Al Omran | Home",
-};
-
 export default function Home() {
   return (
     <>

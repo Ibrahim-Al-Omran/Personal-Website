@@ -2,7 +2,7 @@ import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Ibrahim Al Omran | Projects",
+  title: "Projects",
 };
 
 const projects = [

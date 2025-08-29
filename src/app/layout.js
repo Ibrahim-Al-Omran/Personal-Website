@@ -4,8 +4,8 @@ import CursorLight from "@/components/CursorFollower";
 
 export const metadata = {
   title: {
-    default: "Ibrahim Al Omran - Software Engineering Student",
-    template: "%s | Ibrahim Al Omran"
+    default: "Ibrahim Al Omran | Home",
+    template: "Ibrahim Al Omran | %s"
   },
   description: "19-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects. View my portfolio and connect with me.",
   keywords: [
@@ -46,10 +46,10 @@ export const metadata = {
     siteName: "Ibrahim Al Omran Portfolio",
     images: [
       {
-        url: "/og-image.png", // You'll need to add this image
+        url: "https://ibrahimalomran.com/ia-logo.png", // ✅ updated logo
         width: 1200,
         height: 630,
-        alt: "Ibrahim Al Omran - Software Engineering Student",
+        alt: "Ibrahim Al Omran Logo",
       },
     ],
   },
@@ -57,9 +57,9 @@ export const metadata = {
     card: "summary_large_image",
     title: "Ibrahim Al Omran - Software Engineering Student",
     description: "19-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects.",
-    images: ["/og-image.png"], // Same image as OpenGraph
+    images: ["https://ibrahimalomran.com/ia-logo.png"], // ✅ updated logo
   },
-  metadataBase: new URL("https://ibrahimalomran.com"), // Update with your actual domain
+  metadataBase: new URL("https://ibrahimalomran.com"),
   alternates: {
     canonical: "/",
   },
@@ -74,26 +74,11 @@ export const metadata = {
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
-    other: [
-      {
-        rel: "icon",
-        url: "/android-chrome-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        rel: "icon",
-        url: "/android-chrome-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
-    ],
   },
-  manifest: "/site.webmanifest",
   other: {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
-    "google-site-verification": "your-verification-code", // You'll get this from Google Search Console
+    "google-site-verification": "your-verification-code", // from Search Console
   },
 };
 
@@ -103,7 +88,6 @@ export const viewport = {
   viewportFit: "cover",  
   themeColor: "#030612",  
 }
-
 
 export default function RootLayout({ children }) {
   const jsonLd = {
@@ -115,7 +99,7 @@ export default function RootLayout({ children }) {
       "@type": "EducationalOrganization",
       "name": "McMaster University"
     },
-    "url": "https://ibrahim-al-omran.vercel.app",
+    "url": "https://ibrahimalomran.com",
     "sameAs": [
       "https://github.com/Ibrahim-Al-Omran",
       "https://www.linkedin.com/in/ibrahim-al-omran/"
@@ -129,7 +113,7 @@ export default function RootLayout({ children }) {
   };
 
   return (
-  <html lang="en" className="dark h-full">
+    <html lang="en" className="dark h-full">
       <head>
         <script
           type="application/ld+json"
