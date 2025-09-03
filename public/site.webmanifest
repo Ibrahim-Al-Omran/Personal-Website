@@ -1,0 +1,17 @@
+{
+  "name": "Ibrahim Al Omran - Portfolio",
+  "short_name": "Ibrahim Portfolio",
+  "description": "Ibrahim Al Omran's personal portfolio website showcasing software engineering projects",
+  "icons": [
+    {
+      "src": "/ia_logo_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#030612",
+  "background_color": "#030612",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
