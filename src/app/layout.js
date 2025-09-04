@@ -41,9 +41,9 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: "https://ibrahimalomran.com",
-    title: "Ibrahim Al Omran - Software Engineering Student",
+    title: "Ibrahim Al Omran",
     description: "19-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects.",
-    siteName: "Ibrahim Al Omran Portfolio",
+    siteName: "Ibrahim Al Omran",
     images: [
       {
         url: "https://ibrahimalomran.com/ia_logo_512.png",
@@ -54,8 +54,8 @@ export const metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Ibrahim Al Omran - Software Engineering Student",
+    card: "summary",
+    title: "Ibrahim Al Omran",
     description: "19-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects.",
     images: ["https://ibrahimalomran.com/ia_logo_512.png"],
   },
@@ -114,6 +114,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark h-full">
       <head>
+        <link rel="icon" href="/ia_logo_512.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/ia_logo_512.png" />
+        <meta property="og:image" content="https://ibrahimalomran.com/ia_logo_512.png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:image:type" content="image/png" />
+        <meta name="twitter:image" content="https://ibrahimalomran.com/ia_logo_512.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
