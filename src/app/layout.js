@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import CursorLight from "@/components/CursorFollower";
+import Script from "next/script";
+
 
 export const metadata = {
   title: {
@@ -153,14 +155,6 @@ export default function RootLayout({ children }) {
           name="twitter:image"
           content="https://ibrahimalomran.com/ia_logo_512.png"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
-        />
       </head>
       <body
         className="h-full m-0 p-0 overflow-x-hidden"
@@ -170,6 +164,18 @@ export default function RootLayout({ children }) {
           minHeight: "-webkit-fill-available",
         }}
       >
+        <Script
+          id="person-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <Script
+          id="org-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
         <CursorLight />
         <div
           className="min-h-screen relative"
