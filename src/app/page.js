@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import { Linkedin, Github, Mail } from "lucide-react";
+import AnimatedQuote from "../components/AnimatedQuote";
 
 export default function Home() {
   return (
@@ -25,30 +26,18 @@ export default function Home() {
             Let&apos;s connect! Feel free to reach out through any of the links below.
           </p>
           
-          {/* Animated Quote - appears after all text content */}
-          <div className="mb-8 text-2xl italic font-light text-white/50 leading-relaxed">
-            <span className="animate-fade-in-up inline-block" style={{ animationDelay: '1000ms' }}>The</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '1200ms' }}>man</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '1400ms' }}>who</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '1600ms' }}>loves</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '1800ms' }}>walking</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '2000ms' }}>will</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '2200ms' }}>walk</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '2400ms' }}>further</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '2600ms' }}>than</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '2800ms' }}>the</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '3000ms' }}>man</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '3200ms' }}>who</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '3400ms' }}>loves</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '3600ms' }}>the</span>
-            <span className="animate-fade-in-up inline-block ml-2" style={{ animationDelay: '3800ms' }}>destination</span>
-            <div className="animate-fade-in-up mt-3 text-right text-white/30 text-lg" style={{ animationDelay: '4200ms' }}>
-              — Lao Tzu
-            </div>
-          </div>
+          {/* Animated Quote - now using the reusable component */}
+          <AnimatedQuote
+            text="The man who loves walking will walk further than the man who loves the destination"
+            author="Lao Tzu"
+            startDelay={1000}
+            letterDelay={25}
+            wordDelay={100}
+            className="mb-8 text-2xl italic font-light text-white/50 max-w-4xl"
+          />
           
           {/* Social Media Links */}
-          <div className="flex gap-6 animate-fade-in-up justify-center" style={{ animationDelay: '4600ms' }}>
+          <div className="flex gap-6 animate-fade-in-up justify-center" style={{ animationDelay: '4000ms' }}>
             <Link
               href="https://www.linkedin.com/in/ibrahim-al-omran/"
               target="_blank"
