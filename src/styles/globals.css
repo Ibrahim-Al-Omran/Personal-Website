@@ -21,14 +21,9 @@ html, body {
 }
 
 html {
-  background: linear-gradient(135deg, #030612 0%, #070F29 100%);
   /* Safari mobile fix - prevent background scrolling issues */
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  /* Ensure background extends beyond viewport */
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
 }
 
 /* Safari-specific body fixes */
@@ -42,7 +37,6 @@ body {
   /* Prevent bounce and white space */
   overscroll-behavior: none;
   -webkit-overscroll-behavior: none;
-  background: linear-gradient(135deg, #030612 0%, #070F29 100%);
 }
 
 /* Custom Scrollbar Styling */

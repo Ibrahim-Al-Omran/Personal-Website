@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import CursorLight from "@/components/CursorFollower";
+import VantaBackground from "@/components/VantaBackground";
 import Script from "next/script";
 
 
@@ -159,7 +160,6 @@ export default function RootLayout({ children }) {
       <body
         className="h-full m-0 p-0 overflow-x-hidden"
         style={{
-          background: "linear-gradient(135deg, #030612 0%, #070F29 100%)",
           minHeight: "100vh",
           minHeight: "-webkit-fill-available",
           overscrollBehavior: "none",
@@ -178,6 +178,7 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
+        <VantaBackground />
         <CursorLight />
         <div
           className="min-h-screen relative"
