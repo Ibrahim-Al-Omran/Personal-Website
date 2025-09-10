@@ -162,6 +162,8 @@ export default function RootLayout({ children }) {
           background: "linear-gradient(135deg, #030612 0%, #070F29 100%)",
           minHeight: "100vh",
           minHeight: "-webkit-fill-available",
+          overscrollBehavior: "none",
+          WebkitOverscrollBehavior: "none",
         }}
       >
         <Script

@@ -15,6 +15,9 @@ html, body {
   /* Safari-specific fixes */
   -webkit-overflow-scrolling: touch;
   position: relative;
+  /* Prevent scroll bounce and white space */
+  overscroll-behavior: none;
+  -webkit-overscroll-behavior: none;
 }
 
 html {
@@ -22,6 +25,10 @@ html {
   /* Safari mobile fix - prevent background scrolling issues */
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  /* Ensure background extends beyond viewport */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 /* Safari-specific body fixes */
@@ -32,6 +39,10 @@ body {
   /* Ensure Safari uses proper viewport height */
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  /* Prevent bounce and white space */
+  overscroll-behavior: none;
+  -webkit-overscroll-behavior: none;
+  background: linear-gradient(135deg, #030612 0%, #070F29 100%);
 }
 
 /* Custom Scrollbar Styling */
