@@ -3,7 +3,13 @@ import Navbar from "@/components/Navbar";
 import CursorLight from "@/components/CursorFollower";
 import VantaBackground from "@/components/VantaBackground";
 import Script from "next/script";
+import { Oxanium } from "next/font/google";
 
+const oxanium = Oxanium({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+});
 
 export const metadata = {
   title: {
@@ -141,10 +147,66 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" className="dark h-full">
+    <html lang="en" className={`dark h-full ${oxanium.className}`}>
       <head>
         <link rel="icon" href="/ia_logo_512.png" type="image/png" />
         <link rel="apple-touch-icon" href="/ia_logo_512.png" />
+        <meta name="theme-color" content="#030612" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#030612" media="(prefers-color-scheme: light)" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Ibrahim Al Omran" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-TileColor" content="#030612" />
+        <meta name="msapplication-navbutton-color" content="#030612" />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              color-scheme: dark;
+              --safari-backdrop-color: #030612;
+            }
+            html {
+              background-color: #030612 !important;
+            }
+            body {
+              background: transparent !important;
+            }
+            
+            /* Safari iOS 26+ search bar backdrop fix */
+            @supports (-webkit-backdrop-filter: blur(20px)) {
+              html::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: env(safe-area-inset-top, 44px);
+                background: linear-gradient(180deg, #030612 0%, rgba(3, 6, 18, 0.95) 70%, rgba(3, 6, 18, 0.8) 100%);
+                z-index: 9999;
+                pointer-events: none;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+              }
+            }
+            
+            /* Ensure proper backdrop for Safari search bar */
+            @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+              body {
+                background-attachment: fixed;
+                background-image: linear-gradient(0deg, transparent 0%, rgba(3, 6, 18, 0.1) 100%);
+              }
+            }
+            
+            @supports (height: 100dvh) {
+              html, body {
+                min-height: 100dvh !important;
+              }
+            }
+          `
+        }} />
         <meta
           property="og:image"
           content="https://ibrahimalomran.com/ia_logo_512.png"
@@ -162,6 +224,7 @@ export default function RootLayout({ children }) {
         style={{
           minHeight: "100vh",
           minHeight: "-webkit-fill-available",
+          minHeight: "100dvh",
           overscrollBehavior: "none",
           WebkitOverscrollBehavior: "none",
         }}
@@ -185,6 +248,7 @@ export default function RootLayout({ children }) {
           style={{
             minHeight: "100vh",
             minHeight: "-webkit-fill-available",
+            minHeight: "100dvh",
           }}
         >
           <Navbar />

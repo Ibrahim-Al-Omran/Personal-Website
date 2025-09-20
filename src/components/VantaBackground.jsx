@@ -43,7 +43,7 @@ const VantaBackground = () => {
   return (
     <div
       ref={vantaRef}
-      className="fixed inset-0 w-full h-full -z-50"
+      className="vanta-background fixed inset-0 w-full h-full -z-50"
     />
   );
 };

@@ -1,6 +1,43 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Safari iOS 26+ Search Bar Compatibility */
+@supports (-webkit-appearance: none) and (not (display: -webkit-flex)) {
+  /* Target Safari specifically */
+  html {
+    background: #030612 !important;
+    background-attachment: fixed;
+  }
+  
+  /* Provide consistent backdrop for Safari's dynamic search bar */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-top, 50px);
+    background: linear-gradient(180deg, #030612 0%, rgba(3, 6, 18, 0.9) 100%);
+    z-index: 9998;
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Enhanced Vanta background container for Safari compatibility */
+.vanta-background {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -50;
+  background-color: #030612;
+  /* Ensure backdrop consistency for Safari */
+  background-attachment: fixed;
+}
+
 /* Reset margins and padding for html and body */
 * {
   box-sizing: border-box;
