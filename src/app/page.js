@@ -13,7 +13,7 @@ export default function Home() {
             <h1 className="text-5xl font-bold animate-fade-in-up mb-8">Hi, I&apos;m Ibrahim.</h1>
             
             <p className="text-lg animate-fade-in-up mb-6" style={{ animationDelay: '200ms' }}>
-              I&apos;m a 19-year-old Software Engineering student at McMaster University. 
+              I&apos;m a 20-year-old Software Engineering student at McMaster University. 
               I thrive on challenging myself and learn best through difficult experiences. 
               My passion for technology drives everything I do.
             </p>
