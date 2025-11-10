@@ -17,7 +17,7 @@ export const metadata = {
     template: "Ibrahim Al Omran | %s",
   },
   description:
-    "19-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects. View my portfolio and connect with me.",
+    "20-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects. View my portfolio and connect with me.",
   keywords: [
     "Ibrahim Al Omran",
     "Software Engineering",
