@@ -27,48 +27,48 @@ export default function Home() {
               Let&apos;s connect! Feel free to reach out through any of the links below.
             </p>
             
-            {/* Social Media Links */}
-            <div className="flex gap-6 animate-fade-in-up justify-center" style={{ animationDelay: '1200ms' }}>
+            {/* Social Media Links - smaller buttons & gap on mobile only */}
+            <div className="flex gap-4 md:gap-6 animate-fade-in-up justify-center" style={{ animationDelay: '1200ms' }}>
               <Link
                 href="https://www.linkedin.com/in/ibrahim-al-omran/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-16 h-16 bg-[#201201]/10 border border-[#201201]/20 rounded-full hover:bg-[#201201]/35 hover:border-[#201201]/50 hover:scale-105 transition-all duration-200 backdrop-blur-sm"
+                className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#201201]/10 border border-[#201201]/20 rounded-full hover:bg-[#201201]/35 hover:border-[#201201]/50 hover:scale-105 transition-all duration-200 backdrop-blur-sm"
                 style={{ color: '#201201' }}
                 title="LinkedIn"
               >
-                <Linkedin className="h-8 w-8" />
+                <Linkedin className="h-7 w-7 md:h-8 md:w-8" />
               </Link>
               
               <Link
                 href="https://github.com/Ibrahim-Al-Omran"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-16 h-16 bg-[#201201]/10 border border-[#201201]/20 rounded-full hover:bg-[#201201]/35 hover:border-[#201201]/50 hover:scale-105 transition-all duration-200 backdrop-blur-sm"
+                className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#201201]/10 border border-[#201201]/20 rounded-full hover:bg-[#201201]/35 hover:border-[#201201]/50 hover:scale-105 transition-all duration-200 backdrop-blur-sm"
                 style={{ color: '#201201' }}
                 title="GitHub"
               >
-                <Github className="h-8 w-8" />
+                <Github className="h-7 w-7 md:h-8 md:w-8" />
               </Link>
               
               <Link
                 href="mailto:ibrahimao2005@gmail.com"
-                className="flex items-center justify-center w-16 h-16 bg-[#201201]/10 border border-[#201201]/20 rounded-full hover:bg-[#201201]/35 hover:border-[#201201]/50 hover:scale-105 transition-all duration-200 backdrop-blur-sm"
+                className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#201201]/10 border border-[#201201]/20 rounded-full hover:bg-[#201201]/35 hover:border-[#201201]/50 hover:scale-105 transition-all duration-200 backdrop-blur-sm"
                 style={{ color: '#201201' }}
                 title="Email"
               >
-                <Mail className="h-8 w-8" />
+                <Mail className="h-7 w-7 md:h-8 md:w-8" />
               </Link>
 
               <Link
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-16 h-16 bg-[#201201]/10 border border-[#201201]/20 rounded-full hover:bg-[#201201]/35 hover:border-[#201201]/50 hover:scale-105 transition-all duration-200 backdrop-blur-sm"
+                className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#201201]/10 border border-[#201201]/20 rounded-full hover:bg-[#201201]/35 hover:border-[#201201]/50 hover:scale-105 transition-all duration-200 backdrop-blur-sm"
                 style={{ color: '#201201' }}
                 title="Resume"
               >
-                <FileText className="h-8 w-8" />
+                <FileText className="h-7 w-7 md:h-8 md:w-8" />
               </Link>
             </div>
           </div>
