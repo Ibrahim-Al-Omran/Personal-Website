@@ -7,10 +7,35 @@ export const metadata = {
 
 const projects = [
   {
+    title: "CDL Career Mode",
+    date: "2025",
+    type: "Team Project",
+    length: "Ongoing",
+    description:
+      "An esports management simulator modeling Call of Duty League team dynamics, player ratings, and contract markets. Features Elo-based progression and mode-specific telemetry across Hardpoint, Control, and Search & Destroy.",
+    tech: ["Next.js", "Supabase", "FastAPI", "Python"],
+    highlight: "Engineered Supabase schema for real-time simulation storage, reducing cold-start latency by 75% and enabling thousands of dynamic stat updates per run.",
+    image: "/cdlsim.png",
+    link: "https://www.cdlsimulator.com/",
+  },
+  {
+    title: "Resume Matcher",
+    date: "November 2025",
+    type: "Team Project",
+    length: "1 month",
+    description:
+      "An AI-powered resume optimizer that matches resumes to job postings and auto-generates tailored LaTeX edits. Utilizes Groq LLaMA 3 for contextual analysis, improving match quality by 40% vs. keyword-based models.",
+    tech: ["Next.js", "FastAPI", "LLaMA 3", "Python", "LaTeX"],
+    link: "https://resumematcherandlatexeditor.vercel.app/",
+    repo: "https://github.com/Ibrahim-Al-Omran",
+    highlight: "Integrated PDF parsing and LaTeX compilation pipeline for seamless resume regeneration, with 40% better match quality over keyword models.",
+    image: "/resumematcher.png",
+  },
+  {
     title: "Schedules",
     date: "August 2025",
     type: "Solo Project",
-    length: "1 month",
+    length: "4 months",
     description:
       "A comprehensive schedule management app that automatically parses uploaded schedules, displays shift information, shows coworkers, and syncs with Google Calendar. Adopted by the majority of coworkers at my workplace for efficient shift management.",
     tech: ["TypeScript", "Prisma", "PostgreSQL", "Supabase", "Google Calendar API", "Tailwind CSS"],
@@ -69,12 +94,24 @@ const projects = [
     highlight: "Advanced sensor data filtering algorithms and precise robotic control pipeline for automated waste management.",
     image: "/recycling.png",
   },
+  {
+    title: "Dynamic Tic Tac Toe",
+    date: "2024",
+    type: "McMaster University",
+    length: "1 month",
+    description:
+      "A scalable Tic Tac Toe implementation with variable board sizes and dynamic win conditions. Features modular OOP game logic and a responsive interactive UI with an adaptive rules engine for diverse board configurations.",
+    tech: ["Java"],
+    repo: "https://github.com/Ibrahim-Al-Omran",
+    highlight: "Adaptive rules engine that supports diverse board sizes and dynamic win conditions through modular OOP architecture.",
+    image: null,
+  },
 ];
 
 export default function ProjectsPage() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-10 space-y-8">
-      <h1 className="text-3xl font-bold animate-fade-in-up">My Projects</h1>
+      <h1 className="text-3xl font-bold animate-fade-in-up" style={{ color: '#201201' }}>My Projects</h1>
       <div className="projects-grid">
         {projects.map((proj, index) => (
           <div

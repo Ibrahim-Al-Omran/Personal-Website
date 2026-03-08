@@ -11,7 +11,14 @@ export default function Navbar() {
 	return (
 		<Link
 			href={isHome ? '/projects' : '/'}
-			className="fixed top-4 right-4 z-50 w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all"
+			className="fixed top-4 right-4 z-50 w-12 h-12 backdrop-blur-md rounded-full flex items-center justify-center transition-all"
+			style={{
+				background: 'rgba(32,18,1,0.18)',
+				border: '1px solid rgba(32,18,1,0.35)',
+				color: '#201201',
+			}}
+			onMouseEnter={e => e.currentTarget.style.background = 'rgba(32,18,1,0.30)'}
+			onMouseLeave={e => e.currentTarget.style.background = 'rgba(32,18,1,0.18)'}
 			title={isHome ? 'Projects' : 'Home'}
 		>
 			{isHome ? <FolderOpen className="h-5 w-5" /> : <Home className="h-5 w-5" />}

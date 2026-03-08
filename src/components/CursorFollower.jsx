@@ -1,96 +1,88 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'motion/react';
 
-export default function CursorLight() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-  const lightRef = useRef(null);
-  const mousePos = useRef({ x: 0, y: 0 });
-  const lightPos = useRef({ x: 0, y: 0 });
-  const animationRef = useRef(null);
+const TEXT_TAGS = new Set(['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SPAN', 'A', 'LI', 'LABEL', 'STRONG', 'EM', 'SMALL', 'BLOCKQUOTE']);
+
+const BUTTON_TAGS = new Set(['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']);
+
+function isTextElement(el) {
+  if (!el) return false;
+  // if inside a button-like element, treat as non-text
+  if (el.closest('button, a[href], [role="button"]')) return false;
+  if (BUTTON_TAGS.has(el.tagName)) return false;
+  if (TEXT_TAGS.has(el.tagName)) return true;
+  const parent = el.parentElement;
+  if (parent && TEXT_TAGS.has(parent.tagName)) return true;
+  return false;
+}
+
+export default function CursorFollower() {
+  const [visible, setVisible] = useState(false);
+  const [pressed, setPressed] = useState(false);
+  const [onText, setOnText] = useState(false);
+  const [onAmd, setOnAmd] = useState(false);
+
+  const rawX = useMotionValue(-100);
+  const rawY = useMotionValue(-100);
+
+  const x = useSpring(rawX, { stiffness: 1200, damping: 30, mass: 0.1 });
+  const y = useSpring(rawY, { stiffness: 1200, damping: 30, mass: 0.1 });
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    const isTouch = 'ontouchstart' in window || window.innerWidth <= 768;
+    if (isTouch) return;
 
-  useEffect(() => {
-    if (!isMounted) return;
-
-    // Only run on desktop devices
-    const isDesktop = !('ontouchstart' in window) && window.innerWidth > 768;
-    if (!isDesktop) return;
-
-    const handleMouseMove = (e) => {
-      mousePos.current.x = e.clientX;
-      mousePos.current.y = e.clientY;
-      
-      if (!isVisible) {
-        setIsVisible(true);
-      }
+    const move = (e) => {
+      rawX.set(e.clientX);
+      rawY.set(e.clientY);
+      if (!visible) setVisible(true);
+      setOnText(isTextElement(e.target));
+      setOnAmd(!!e.target.closest('.amd-logo'));
     };
+    const hide = () => setVisible(false);
+    const show = () => setVisible(true);
+    const down = () => setPressed(true);
+    const up = () => setPressed(false);
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-
-    // Smooth lerp animation using requestAnimationFrame
-    const animateLight = () => {
-      if (!lightRef.current) return;
-
-      // Lerp factor for smooth following (0.1 = slow, 0.3 = fast)
-      const lerpFactor = 1.0;
-
-      // Calculate smooth interpolated position
-      lightPos.current.x += (mousePos.current.x - lightPos.current.x) * lerpFactor;
-      lightPos.current.y += (mousePos.current.y - lightPos.current.y) * lerpFactor;
-
-      // Update light position
-      lightRef.current.style.transform = `translate(${lightPos.current.x - 400}px, ${lightPos.current.y - 400}px)`;
-
-      // Continue animation
-      animationRef.current = requestAnimationFrame(animateLight);
-    };
-
-    // Event listeners
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
-
-    // Start animation loop
-    animationRef.current = requestAnimationFrame(animateLight);
-
-    // Cleanup
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseleave', hide);
+    document.addEventListener('mouseenter', show);
+    document.addEventListener('mousedown', down);
+    document.addEventListener('mouseup', up);
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('mouseleave', hide);
+      document.removeEventListener('mouseenter', show);
+      document.removeEventListener('mousedown', down);
+      document.removeEventListener('mouseup', up);
     };
-  }, [isVisible, isMounted]);
-
-  // Don't render on server-side or mobile/touch devices
-  if (!isMounted) return null;
-  
-  if (typeof window !== 'undefined' && ('ontouchstart' in window || window.innerWidth <= 768)) {
-    return null;
-  }
+  }, [rawX, rawY, visible]);
 
   return (
-    <div
-      ref={lightRef}
-      className={`
-        fixed top-0 left-0 pointer-events-none z-10
-        w-[800px] h-[800px] rounded-full
-        transition-opacity duration-500 ease-out
-        ${isVisible ? 'opacity-100' : 'opacity-0'}
-      `}
+    <motion.div
+      className="pointer-events-none fixed z-[9999]"
       style={{
-        background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.05) 15%, rgba(255,255,255,0.03) 30%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.01) 70%, rgba(255,255,255,0.005) 85%, transparent 100%)',
-        mixBlendMode: 'screen',
-        filter: 'blur(15px)',
+        x,
+        y,
+        translateX: '-50%',
+        translateY: '-50%',
+        top: 0,
+        left: 0,
       }}
-    />
+      animate={{ opacity: visible && !onAmd ? 1 : 0 }}
+      transition={{ opacity: { duration: 0.2 } }}
+    >
+      <motion.div
+        style={{ backgroundColor: '#201201' }}
+        animate={
+          onText
+            ? { width: pressed ? 2 : 5, height: 20, borderRadius: 2, scale: 1 }
+            : { width: 10, height: 10, borderRadius: 5, scale: pressed ? 0.4 : 1 }
+        }
+        transition={{ duration: 0.15, ease: 'easeInOut' }}
+      />
+    </motion.div>
   );
 }

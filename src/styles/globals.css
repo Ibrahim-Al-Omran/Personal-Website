@@ -3,13 +3,11 @@
 
 /* Safari iOS 26+ Search Bar Compatibility */
 @supports (-webkit-appearance: none) and (not (display: -webkit-flex)) {
-  /* Target Safari specifically */
   html {
-    background: #030612 !important;
+    background: #fffef3 !important;
     background-attachment: fixed;
   }
   
-  /* Provide consistent backdrop for Safari's dynamic search bar */
   body::before {
     content: '';
     position: fixed;
@@ -17,7 +15,7 @@
     left: 0;
     right: 0;
     height: env(safe-area-inset-top, 50px);
-    background: linear-gradient(180deg, #030612 0%, rgba(3, 6, 18, 0.9) 100%);
+    background: linear-gradient(180deg, #fffef3 0%, rgba(255, 254, 243, 0.9) 100%);
     z-index: 9998;
     pointer-events: none;
     backdrop-filter: blur(10px);
@@ -33,8 +31,7 @@
   width: 100vw !important;
   height: 100vh !important;
   z-index: -50;
-  background-color: #030612;
-  /* Ensure backdrop consistency for Safari */
+  background-color: #fffef3;
   background-attachment: fixed;
 }
 
@@ -82,24 +79,24 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #030612;
+  background: #fffef3;
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #101e44, #0f215c);
+  background: linear-gradient(135deg, #c4a882, #a8896a);
   border-radius: 6px;
-  border: 2px solid #030612;
+  border: 2px solid #fffef3;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  background: linear-gradient(135deg, #8a6b4a, #6b4e32);
 }
 
 /* Firefox scrollbar styling */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #182758 #030612;
+  scrollbar-color: #c4a882 #fffef3;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -180,39 +177,39 @@ body {
 }
 
 .dark {
-  --background: linear-gradient(135deg, #030612 0%, #070F29 100%);
-  --foreground: #E6E6E6;
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: #E6E6E6;
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: #E6E6E6;
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  --background: #fffef3;
+  --foreground: #201201;
+  --card: #f5edd6;
+  --card-foreground: #201201;
+  --popover: #f5edd6;
+  --popover-foreground: #201201;
+  --primary: #201201;
+  --primary-foreground: #fffef3;
+  --secondary: #ede5cc;
+  --secondary-foreground: #201201;
+  --muted: #ede5cc;
+  --muted-foreground: rgba(32, 18, 1, 0.6);
+  --accent: #ede5cc;
+  --accent-foreground: #201201;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --border: rgba(32, 18, 1, 0.15);
+  --input: rgba(32, 18, 1, 0.12);
+  --ring: rgba(32, 18, 1, 0.3);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
-  --projectcard-primary: #112267;
-  --projectcard-secondary: #132673;
+  --sidebar: #f5edd6;
+  --sidebar-foreground: #201201;
+  --sidebar-primary: #201201;
+  --sidebar-primary-foreground: #fffef3;
+  --sidebar-accent: #ede5cc;
+  --sidebar-accent-foreground: #201201;
+  --sidebar-border: rgba(32, 18, 1, 0.15);
+  --sidebar-ring: rgba(32, 18, 1, 0.3);
+  --projectcard-primary: #f0e8d4;
+  --projectcard-secondary: #e8dcc6;
 }
 
 @layer base {
@@ -231,15 +228,13 @@ body {
   min-height: 100vh;
   }
   .project-card {
-  /* vertical gradient from primary to secondary defined in .dark */
   background: linear-gradient(180deg, var(--projectcard-primary) 0%, var(--projectcard-secondary) 100%);
   color: var(--card-foreground);
-  border: 1px solid rgba(255,255,255,0.08); /* subtle solid border */
-  backdrop-filter: blur(6px);               /* optional glassy blur */
+  border: 1px solid rgba(32, 18, 1, 0.12);
+  backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   background-repeat: no-repeat;
   background-size: cover;
-  /* Make all cards same height */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -370,30 +365,9 @@ body {
   }
 }
 
-/* Custom Cursors */
-* {
-  cursor: url('/cursors/wii-pointer-ccw.cur') 0 0, auto;
-}
-
-/* Hover cursor for interactive elements with enhanced click areas */
-a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
-  cursor: url('/cursors/wii-open-ccw.cur') 16 16, pointer;
-}
-
-/* Enhanced click areas without affecting visual styling */
-a::before, button::before, [role="button"]::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  z-index: -1;
-}
-
-/* Ensure positioned elements for pseudo-elements */
-a, button, [role="button"] {
-  position: relative;
+/* Hide native cursor — replaced by circle cursor component */
+*, *::before, *::after {
+  cursor: none !important;
 }
 
 /* Specific styling for project card buttons to maintain consistency */
@@ -429,49 +403,57 @@ a[href*="linkedin"], a[href*="github"], a[href*="mailto"] {
   font-weight: 500;
 }
 
-/* Click/Active cursor for all elements */
-*:active {
-  cursor: url('/cursors/wii-grab-ccw.cur') 16 16, grabbing !important;
-}
-
-/* Click/Active cursor for interactive elements */
-a:active, button:active, [role="button"]:active, input[type="submit"]:active, input[type="button"]:active, .cursor-pointer:active {
-  cursor: url('/cursors/wii-grab-ccw.cur') 16 16, grabbing !important;
-}
-
 /* Prevent icons from interfering with button cursor behavior */
 a svg, button svg, [role="button"] svg {
   pointer-events: none;
 }
 
-/* Mouse Follower Cursor Styles */
-.mf-cursor {
-  width: 300px;
-  height: 300px;
+
+/* AMD Logo */
+.amd-logo {
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  position: relative;
+  color: #E01A2D;
+}
+
+.amd-logo::after {
+  content: 'AMD';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(80, 0, 0, 0.7) 40%,
+    #000000 50%,
+    rgba(80, 0, 0, 0.7) 60%,
+    transparent 80%,
+    transparent 100%
+  );
+  background-size: 300% 100%;
+  background-position: 200% center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   pointer-events: none;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 30%, transparent 70%);
-  mix-blend-mode: screen;
-  z-index: 9999;
-  transform-origin: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.mf-cursor-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-/* Cursor states */
-.mf-cursor.-pointer {
-  transform: scale(1.2);
-  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 30%, transparent 70%);
-}
-
-.mf-cursor.-hidden {
   opacity: 0;
-  transform: scale(0.8);
+}
+
+.amd-logo:hover::after {
+  opacity: 1;
+  animation: amd-wave 0.7s linear infinite;
+}
+
+.amd-logo:hover {
+  filter: drop-shadow(0 0 8px rgba(224, 26, 45, 0.7));
+  transition: filter 0.1s ease;
+}
+
+@keyframes amd-wave {
+  0%   { background-position: 200% center; opacity: 1; }
+  100% { background-position: -100% center; opacity: 1; }
 }
 
   .animate-slide-in-right {

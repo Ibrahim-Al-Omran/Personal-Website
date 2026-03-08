@@ -9,7 +9,10 @@ const VantaBackground = () => {
   const vantaEffect = useRef(null);
 
   useEffect(() => {
-    console.log("Initializing VantaBackground..."); // Debugging log
+    // THREE.VertexColors was removed in r152 — restore for Vanta compatibility
+    if (THREE.VertexColors === undefined) {
+      THREE.VertexColors = 2;
+    }
     if (!vantaEffect.current) {
       vantaEffect.current = NET({
         el: vantaRef.current,
@@ -21,19 +24,16 @@ const VantaBackground = () => {
         minWidth: 200.0,
         scale: 1.0,
         scaleMobile: 1.0,
-        color: 0xDAB0FF,        // #DAB0FF light purple for dots
-        backgroundColor: 0x030612, // dark background
-        lineColor: 0xDAB0FF,    // #DAB0FF light purple for connecting lines
+        color: 0x8B5E3C,
+        backgroundColor: 0xfffef3,
         points: 10,
         maxDistance: 20,
         spacing: 15,
       });
-      console.log("VantaBackground initialized."); // Debugging log
     }
 
     return () => {
       if (vantaEffect.current) {
-        console.log("Destroying VantaBackground..."); // Debugging log
         vantaEffect.current.destroy();
         vantaEffect.current = null;
       }

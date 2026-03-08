@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
-import CursorLight from "@/components/CursorFollower";
 import VantaBackground from "@/components/VantaBackground";
+import CursorDot from "@/components/CursorFollower";
 import Script from "next/script";
 import { Oxanium } from "next/font/google";
 
@@ -92,10 +92,10 @@ export const metadata = {
   },
   other: {
     "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "black-translucent",
-    "google-site-verification": "your-verification-code", // from Search Console
-    "msapplication-TileColor": "#030612",
-    "theme-color": "#030612",
+    "apple-mobile-web-app-status-bar-style": "default",
+    "google-site-verification": "your-verification-code",
+    "msapplication-TileColor": "#fffef3",
+    "theme-color": "#fffef3",
   },
 };
 
@@ -103,7 +103,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#030612",
+  themeColor: "#fffef3",
 };
 
 export default function RootLayout({ children }) {
@@ -151,8 +151,8 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/ia_logo_512.png" type="image/png" />
         <link rel="apple-touch-icon" href="/ia_logo_512.png" />
-        <meta name="theme-color" content="#030612" media="(prefers-color-scheme: dark)" />
-        <meta name="theme-color" content="#030612" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#fffef3" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#fffef3" media="(prefers-color-scheme: light)" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Ibrahim Al Omran" />
@@ -160,22 +160,21 @@ export default function RootLayout({ children }) {
         <meta name="format-detection" content="telephone=no" />
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-TileColor" content="#030612" />
-        <meta name="msapplication-navbutton-color" content="#030612" />
+        <meta name="msapplication-TileColor" content="#fffef3" />
+        <meta name="msapplication-navbutton-color" content="#fffef3" />
         <style dangerouslySetInnerHTML={{
           __html: `
             :root {
-              color-scheme: dark;
-              --safari-backdrop-color: #030612;
+              color-scheme: light;
+              --safari-backdrop-color: #fffef3;
             }
             html {
-              background-color: #030612 !important;
+              background-color: #fffef3 !important;
             }
             body {
               background: transparent !important;
             }
             
-            /* Safari iOS 26+ search bar backdrop fix */
             @supports (-webkit-backdrop-filter: blur(20px)) {
               html::before {
                 content: '';
@@ -184,7 +183,7 @@ export default function RootLayout({ children }) {
                 left: 0;
                 right: 0;
                 height: env(safe-area-inset-top, 44px);
-                background: linear-gradient(180deg, #030612 0%, rgba(3, 6, 18, 0.95) 70%, rgba(3, 6, 18, 0.8) 100%);
+                background: linear-gradient(180deg, #fffef3 0%, rgba(255, 254, 243, 0.95) 70%, rgba(255, 254, 243, 0.8) 100%);
                 z-index: 9999;
                 pointer-events: none;
                 backdrop-filter: blur(20px);
@@ -192,11 +191,10 @@ export default function RootLayout({ children }) {
               }
             }
             
-            /* Ensure proper backdrop for Safari search bar */
             @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
               body {
                 background-attachment: fixed;
-                background-image: linear-gradient(0deg, transparent 0%, rgba(3, 6, 18, 0.1) 100%);
+                background-image: linear-gradient(0deg, transparent 0%, rgba(255, 254, 243, 0.1) 100%);
               }
             }
             
@@ -242,7 +240,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         <VantaBackground />
-        <CursorLight />
+        <CursorDot />
         <div
           className="min-h-screen relative"
           style={{
