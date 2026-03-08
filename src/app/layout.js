@@ -3,11 +3,11 @@ import Navbar from "@/components/Navbar";
 import VantaBackground from "@/components/VantaBackground";
 import CursorDot from "@/components/CursorFollower";
 import Script from "next/script";
-import { Oxanium } from "next/font/google";
+import { Quattrocento } from "next/font/google";
 
-const oxanium = Oxanium({
+const quattrocento = Quattrocento({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -147,7 +147,7 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" className={`dark h-full ${oxanium.className}`}>
+    <html lang="en" className={`dark h-full ${quattrocento.className}`}>
       <head>
         <link rel="icon" href="/ia_logo_512.png" type="image/png" />
         <link rel="apple-touch-icon" href="/ia_logo_512.png" />
