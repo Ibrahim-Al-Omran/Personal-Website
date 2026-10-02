@@ -4,7 +4,7 @@
 /* Safari iOS 26+ Search Bar Compatibility */
 @supports (-webkit-appearance: none) and (not (display: -webkit-flex)) {
   html {
-    background: #fffef3 !important;
+    background: #c1ddff !important;
     background-attachment: fixed;
   }
   
@@ -15,7 +15,7 @@
     left: 0;
     right: 0;
     height: env(safe-area-inset-top, 50px);
-    background: linear-gradient(180deg, #fffef3 0%, rgba(255, 254, 243, 0.9) 100%);
+    background: linear-gradient(180deg, #c1ddff 0%, rgba(193, 221, 255, 0.9) 100%);
     z-index: 9998;
     pointer-events: none;
     backdrop-filter: blur(10px);
@@ -31,7 +31,7 @@
   width: 100vw !important;
   height: 100vh !important;
   z-index: -50;
-  background-color: #fffef3;
+  background-color: #c1ddff;
   background-attachment: fixed;
 }
 
@@ -79,14 +79,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #fffef3;
+  background: #c1ddff;
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, #c4a882, #a8896a);
   border-radius: 6px;
-  border: 2px solid #fffef3;
+  border: 2px solid #c1ddff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -96,7 +96,7 @@ body {
 /* Firefox scrollbar styling */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #c4a882 #fffef3;
+  scrollbar-color: #c4a882 #c1ddff;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -177,7 +177,7 @@ body {
 }
 
 .dark {
-  --background: #fffef3;
+  --background: #c1ddff;
   --foreground: #201201;
   --card: #f5edd6;
   --card-foreground: #201201;
@@ -208,8 +208,8 @@ body {
   --sidebar-accent-foreground: #201201;
   --sidebar-border: rgba(32, 18, 1, 0.15);
   --sidebar-ring: rgba(32, 18, 1, 0.3);
-  --projectcard-primary: #f0e8d4;
-  --projectcard-secondary: #e8dcc6;
+  --projectcard-primary: #fffcf9;
+  --projectcard-secondary: #fffcf9;
 }
 
 @layer base {
@@ -228,11 +228,11 @@ body {
   min-height: 100vh;
   }
   .project-card {
-  background: linear-gradient(180deg, var(--projectcard-primary) 0%, var(--projectcard-secondary) 100%);
+  background: rgba(255, 252, 249, 0.8);
   color: var(--card-foreground);
   border: 1px solid rgba(32, 18, 1, 0.12);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
@@ -443,7 +443,7 @@ a svg, button svg, [role="button"] svg {
 
 .amd-logo:hover::after {
   opacity: 1;
-  animation: amd-wave 0.7s linear infinite;
+  animation: brand-wave 0.7s linear infinite;
 }
 
 .amd-logo:hover {
@@ -451,7 +451,92 @@ a svg, button svg, [role="button"] svg {
   transition: filter 0.1s ease;
 }
 
-@keyframes amd-wave {
+/* Ascendance Foundry Logo */
+.ascendance-logo {
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  position: relative;
+  color: #2f4fc7;
+}
+
+.ascendance-logo::after {
+  content: 'Ascendance Foundry';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(40, 70, 200, 0.75) 40%,
+    #1a2f9e 50%,
+    rgba(40, 70, 200, 0.75) 60%,
+    transparent 80%,
+    transparent 100%
+  );
+  background-size: 300% 100%;
+  background-position: 200% center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.ascendance-logo:hover::after {
+  opacity: 1;
+  animation: brand-wave 0.7s linear infinite;
+}
+
+.ascendance-logo:hover {
+  filter: drop-shadow(0 0 8px rgba(65, 105, 225, 0.7));
+  transition: filter 0.1s ease;
+}
+
+/* Sandbox Simulator Logo */
+.sandbox-logo {
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  position: relative;
+  color: #7c5cff;
+  text-decoration: none;
+}
+
+.sandbox-logo::after {
+  content: 'Sandbox Simulator';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(80, 40, 180, 0.75) 40%,
+    #3b1d8f 50%,
+    rgba(80, 40, 180, 0.75) 60%,
+    transparent 80%,
+    transparent 100%
+  );
+  background-size: 300% 100%;
+  background-position: 200% center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sandbox-logo:hover::after {
+  opacity: 1;
+  animation: brand-wave 0.7s linear infinite;
+}
+
+.sandbox-logo:hover {
+  filter: drop-shadow(0 0 8px rgba(124, 92, 255, 0.7));
+  transition: filter 0.1s ease;
+}
+
+@keyframes brand-wave {
   0%   { background-position: 200% center; opacity: 1; }
   100% { background-position: -100% center; opacity: 1; }
 }

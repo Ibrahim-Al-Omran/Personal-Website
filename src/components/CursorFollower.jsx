@@ -22,7 +22,7 @@ export default function CursorFollower() {
   const [visible, setVisible] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [onText, setOnText] = useState(false);
-  const [onAmd, setOnAmd] = useState(false);
+  const [onBrand, setOnBrand] = useState(false);
 
   const rawX = useMotionValue(-100);
   const rawY = useMotionValue(-100);
@@ -39,7 +39,7 @@ export default function CursorFollower() {
       rawY.set(e.clientY);
       if (!visible) setVisible(true);
       setOnText(isTextElement(e.target));
-      setOnAmd(!!e.target.closest('.amd-logo'));
+      setOnBrand(!!e.target.closest('.amd-logo, .ascendance-logo, .sandbox-logo'));
     };
     const hide = () => setVisible(false);
     const show = () => setVisible(true);
@@ -71,7 +71,7 @@ export default function CursorFollower() {
         top: 0,
         left: 0,
       }}
-      animate={{ opacity: visible && !onAmd ? 1 : 0 }}
+      animate={{ opacity: visible && !onBrand ? 1 : 0 }}
       transition={{ opacity: { duration: 0.2 } }}
     >
       <motion.div

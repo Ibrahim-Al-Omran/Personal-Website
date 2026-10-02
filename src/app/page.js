@@ -7,23 +7,41 @@ export default function Home() {
     <>
       <main className="flex justify-center items-center min-h-screen p-2 md:py-0 pt-4 pb-8">
         <div className="max-w-2xl w-full">
-          <div className="backdrop-blur-md bg-[#fffef3]/80 border border-[#201201]/15 rounded-2xl py-12 px-8 shadow-xl relative z-10 flex flex-col justify-center">
+          <div className="backdrop-blur-md bg-[#fffcf9]/80 border border-[#201201]/15 rounded-2xl py-12 px-8 shadow-xl relative z-10 flex flex-col justify-center">
             <h1 className="text-5xl font-bold animate-fade-in-up mb-8" style={{ color: '#201201' }}>Hi, I&apos;m Ibrahim.</h1>
             
             <p className="text-lg animate-fade-in-up mb-6" style={{ animationDelay: '200ms', color: '#201201' }}>
-              I&apos;m a 20-year-old Software Engineering student at McMaster University, currently interning as a{' '}
-              <strong>System Architect</strong> at{' '}
-              <span className="amd-logo text-lg font-black">AMD</span>.
+              I&apos;m a Software Engineering student at McMaster University, currently a{' '}
+              <strong>Software Engineer</strong> at{' '}
+              <span className="ascendance-logo text-lg font-black">Ascendance Foundry</span>,
+              where I build custom AI-powered software and automation for clients.
             </p>
-            <p className="text-lg animate-fade-in-up mb-6" style={{ animationDelay: '400ms', color: '#201201' }}>
+            <p className="text-lg animate-fade-in-up mb-6" style={{ animationDelay: '350ms', color: '#201201' }}>
+              On the side, I&apos;m building{' '}
+              <Link
+                href="https://www.cdlsimulator.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sandbox-logo text-lg font-black"
+              >
+                Sandbox Simulator
+              </Link>
+              , a world-building simulation platform with 10,000+ users and 20,000+ weekly visitors.
+            </p>
+            <p className="text-lg animate-fade-in-up mb-6" style={{ animationDelay: '500ms', color: '#201201' }}>
+              Previously, I was a Software Engineer Intern at{' '}
+              <span className="amd-logo text-lg font-black">AMD</span>,
+              where I wrote ML models as GPU kernels and fused operators from ONNX graphs into optimized kernels for next-gen graphics architectures.
+            </p>
+            <p className="text-lg animate-fade-in-up mb-6" style={{ animationDelay: '650ms', color: '#201201' }}>
               I thrive on challenging myself and learn best through difficult experiences.
               My passion for technology drives everything I do.
             </p>
-            <p className="text-lg animate-fade-in-up mb-6" style={{ animationDelay: '600ms', color: '#201201' }}>
+            <p className="text-lg animate-fade-in-up mb-6" style={{ animationDelay: '800ms', color: '#201201' }}>
               You&apos;ll find all my projects on GitHub, with my favorites showcased here.
               When I&apos;m not coding, you&apos;ll find me at the gym, on the tennis court, or exploring the latest tech on YouTube.
             </p>
-            <p className="text-lg animate-fade-in-up mb-8" style={{ animationDelay: '800ms', color: '#201201' }}>
+            <p className="text-lg animate-fade-in-up mb-8" style={{ animationDelay: '950ms', color: '#201201' }}>
               Let&apos;s connect! Feel free to reach out through any of the links below.
             </p>
             

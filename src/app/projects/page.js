@@ -7,15 +7,15 @@ export const metadata = {
 
 const projects = [
   {
-    title: "CDL Career Mode",
+    title: "Sandbox Simulator",
     date: "2025",
     type: "Team Project",
     length: "Ongoing",
     description:
-      "An esports management simulator modeling Call of Duty League team dynamics, player ratings, and contract markets. Features Elo-based progression and mode-specific telemetry across Hardpoint, Control, and Search & Destroy.",
+      "A world-building simulation platform for creating and simulating custom competitive ecosystems — players, teams, organizations, seasons, and persistent worlds. Grown to 10,000+ registered users and 20,000+ weekly visitors.",
     tech: ["Next.js", "Supabase", "FastAPI", "Python"],
-    highlight: "Engineered Supabase schema for real-time simulation storage, reducing cold-start latency by 75% and enabling thousands of dynamic stat updates per run.",
-    image: "/cdlsim.png",
+    highlight: "Built a configurable simulation engine and scalable full-stack architecture for persistent game state and large-scale simulation workloads.",
+    image: "/sandbox.png",
     link: "https://www.cdlsimulator.com/",
   },
   {
@@ -24,7 +24,7 @@ const projects = [
     type: "Team Project",
     length: "1 month",
     description:
-      "An AI-powered resume optimizer that matches resumes to job postings and auto-generates tailored LaTeX edits. Utilizes Groq LLaMA 3 for contextual analysis, improving match quality by 40% vs. keyword-based models.",
+      "An AI-powered resume optimizer that matches resumes to job postings and auto-generates tailored LaTeX edits. Utilizes LLaMA 3 for contextual analysis, improving match quality by 40% vs. keyword-based models.",
     tech: ["Next.js", "FastAPI", "LLaMA 3", "Python", "LaTeX"],
     link: "https://resumematcherandlatexeditor.vercel.app/",
     repo: "https://github.com/Ibrahim-Al-Omran",
@@ -37,11 +37,11 @@ const projects = [
     type: "Solo Project",
     length: "4 months",
     description:
-      "A comprehensive schedule management app that automatically parses uploaded schedules, displays shift information, shows coworkers, and syncs with Google Calendar. Adopted by the majority of coworkers at my workplace for efficient shift management.",
+      "A schedule management app that parses XLSX schedules to display shifts and coworkers, syncs with Google Calendar, and calculates expected pay from hours and rates. Deployed to 15+ coworkers at Crocs Inc.",
     tech: ["TypeScript", "Prisma", "PostgreSQL", "Supabase", "Google Calendar API", "Tailwind CSS"],
     link: "https://schedules-ashen.vercel.app/",
     repo: "https://github.com/Ibrahim-Al-Omran/Schedules",
-    highlight: "Advanced XLSX file parsing with automated data extraction and seamless Google Calendar integration using Prisma ORM.",
+    highlight: "XLSX parsing, Google Calendar sync, and a pay calculation system for scheduled shifts.",
     image: "/schedules.png",
   },
   {

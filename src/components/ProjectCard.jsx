@@ -8,7 +8,7 @@ export default function ProjectCard({ title, description, tags = [], href, date,
     <article
       className="project-card rounded-lg p-6 backdrop-blur-sm shadow-md border hover:shadow-xl transition-transform transform hover:-translate-y-1"
       style={{
-        background: 'linear-gradient(180deg, var(--projectcard-primary) 0%, var(--projectcard-secondary) 100%)',
+        background: 'rgba(255, 252, 249, 0.8)',
         borderColor: 'rgba(32, 18, 1, 0.12)',
         color: '#201201',
       }}
