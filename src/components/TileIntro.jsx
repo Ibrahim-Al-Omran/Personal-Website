@@ -32,12 +32,15 @@ function buildTiles(width, height) {
   );
 
   const tiles = [];
+  let maxDelay = 0;
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
       const sweep = (Math.hypot(c - cx, r - cy) / maxDist) * SWEEP;
+      const delay = Math.round(sweep + Math.random() * SCATTER);
+      if (delay > maxDelay) maxDelay = delay;
       tiles.push({
         key: r * cols + c,
-        delay: Math.round(sweep + Math.random() * SCATTER),
+        delay,
         jx: Math.round(rowShift[r] + (Math.random() - 0.5) * size * 0.35),
         jy: Math.round((Math.random() - 0.5) * size * 0.2),
         shade: SHADES[Math.floor(Math.random() * SHADES.length)],
@@ -45,7 +48,7 @@ function buildTiles(width, height) {
       });
     }
   }
-  return { size, cols, rows, tiles };
+  return { size, cols, rows, tiles, maxDelay };
 }
 
 export default function TileIntro() {
@@ -109,10 +112,12 @@ export default function TileIntro() {
 
   useEffect(() => {
     if (phase !== 'out' && phase !== 'fade') return;
-    const total = phase === 'fade' ? 420 : SWEEP + SCATTER + TILE_DURATION + 120;
+    // Unmount as soon as the last tile finishes — no extra second of leftover frames.
+    const total =
+      phase === 'fade' ? 420 : (grid?.maxDelay ?? SWEEP + SCATTER) + TILE_DURATION + 40;
     const timer = window.setTimeout(() => setPhase('done'), total);
     return () => window.clearTimeout(timer);
-  }, [phase]);
+  }, [phase, grid]);
 
   if (phase === 'done') return null;
 
@@ -150,7 +155,8 @@ export default function TileIntro() {
               ? {
                   animationName: 'tile-glitch-out',
                   animationDuration: `${TILE_DURATION}ms`,
-                  animationTimingFunction: 'steps(1, end)',
+                  // steps() holds the penultimate frame on mobile Safari; ease-out clears cleanly.
+                  animationTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
                   animationDelay: `${t.delay}ms`,
                   animationFillMode: 'forwards',
                 }
