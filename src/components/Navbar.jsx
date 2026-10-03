@@ -11,7 +11,7 @@ export default function Navbar() {
 	return (
 		<Link
 			href={isHome ? '/projects' : '/'}
-			className={`fixed top-4 right-4 z-50 w-12 h-12 backdrop-blur-md rounded-full flex items-center justify-center transition-all ${isHome ? 'md:hidden' : ''}`}
+			className="fixed top-4 right-4 z-50 w-12 h-12 backdrop-blur-md rounded-full flex items-center justify-center transition-all"
 			style={{
 				background: 'rgba(32,18,1,0.18)',
 				border: '1px solid rgba(32,18,1,0.35)',
