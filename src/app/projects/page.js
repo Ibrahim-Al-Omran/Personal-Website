@@ -1,117 +1,14 @@
 import ProjectCard from "@/components/ProjectCard";
-import Link from "next/link";
+import { projects } from "@/data/projects";
 
 export const metadata = {
   title: "Projects",
 };
 
-const projects = [
-  {
-    title: "Sandbox Simulator",
-    date: "2025",
-    type: "Team Project",
-    length: "Ongoing",
-    description:
-      "A world-building simulation platform for creating and simulating custom competitive ecosystems — players, teams, organizations, seasons, and persistent worlds. Grown to 10,000+ registered users and 20,000+ weekly visitors.",
-    tech: ["Next.js", "Supabase", "FastAPI", "Python"],
-    highlight: "Built a configurable simulation engine and scalable full-stack architecture for persistent game state and large-scale simulation workloads.",
-    image: "/sandbox.png",
-    link: "https://www.cdlsimulator.com/",
-  },
-  {
-    title: "Resume Matcher",
-    date: "November 2025",
-    type: "Team Project",
-    length: "1 month",
-    description:
-      "An AI-powered resume optimizer that matches resumes to job postings and auto-generates tailored LaTeX edits. Utilizes LLaMA 3 for contextual analysis, improving match quality by 40% vs. keyword-based models.",
-    tech: ["Next.js", "FastAPI", "LLaMA 3", "Python", "LaTeX"],
-    link: "https://resumematcherandlatexeditor.vercel.app/",
-    repo: "https://github.com/Ibrahim-Al-Omran",
-    highlight: "Integrated PDF parsing and LaTeX compilation pipeline for seamless resume regeneration, with 40% better match quality over keyword models.",
-    image: "/resumematcher.png",
-  },
-  {
-    title: "Schedules",
-    date: "August 2025",
-    type: "Solo Project",
-    length: "4 months",
-    description:
-      "A schedule management app that parses XLSX schedules to display shifts and coworkers, syncs with Google Calendar, and calculates expected pay from hours and rates. Deployed to 15+ coworkers at Crocs Inc.",
-    tech: ["TypeScript", "Prisma", "PostgreSQL", "Supabase", "Google Calendar API", "Tailwind CSS"],
-    link: "https://schedules-ashen.vercel.app/",
-    repo: "https://github.com/Ibrahim-Al-Omran/Schedules",
-    highlight: "XLSX parsing, Google Calendar sync, and a pay calculation system for scheduled shifts.",
-    image: "/schedules.png",
-  },
-  {
-    title: "Rebottal",
-    date: "July 2025",
-    type: "Solo Project",
-    length: "1 month",
-    description:
-      "An AI-powered debate platform that generates intelligent counterpoints to user arguments, creating an engaging debate simulation experience. Features real-time AI responses and dynamic conversation flow.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Groq AI API"],
-    link: "https://rebottal.vercel.app/",
-    repo: "https://github.com/Ibrahim-Al-Omran/Rebottal",
-    highlight: "Sophisticated AI API integration with conversational prompt engineering for natural debate interactions.",
-    image: "/rebottal.png",
-  },
-  {
-    title: "PinPoint",
-    date: "May 2025",
-    type: "Solo Project",
-    length: "2 months",
-    description:
-      "An interactive geography quiz game featuring flag and capital challenges with survival mode and competitive global leaderboards. Successfully attracted 15+ active users with engaging gameplay mechanics.",
-    tech: ["JavaScript", "React", "Node.js", "Firebase", "Vercel"],
-    link: "https://pinpoint-ibrs.vercel.app",
-    repo: "https://github.com/Ibrahim-Al-Omran/PinPoint",
-    highlight: "Real-time leaderboard system with Firebase database integration tracking user streaks and competitive rankings.",
-    image: "/pinpoint.png",
-  },
-  {
-    title: "Rescue Drone Mission",
-    date: "March 2025",
-    type: "Group School Project",
-    length: "2 months",
-    description:
-      "A sophisticated drone exploration simulation for disaster scenarios on fictional islands. Features autonomous navigation algorithms and intelligent return-to-base strategies with comprehensive safety protocols.",
-    tech: ["Java"],
-    repo: "https://github.com/arian-fallahpour/2AA4-A2",
-    highlight: "Advanced autonomous logic implementation with strong OOP principles, design patterns, and strategic project planning methodologies.",
-    image: "/rescuemission.png",
-  },
-  {
-    title: "Autonomous Recycling System",
-    date: "February 2024",
-    type: "Solo Coding, Group Design",
-    length: "2 months",
-    description:
-      "An intelligent bottle-sorting system utilizing weight and color sensor integration with robotic arm control. Achieved exceptional 90%+ accuracy across comprehensive testing scenarios.",
-    tech: ["Python", "QLabs"],
-    repo: "https://github.com/Ibrahim-Al-Omran/Recycling_System_1P13",
-    highlight: "Advanced sensor data filtering algorithms and precise robotic control pipeline for automated waste management.",
-    image: "/recycling.png",
-  },
-  {
-    title: "Dynamic Tic Tac Toe",
-    date: "2024",
-    type: "McMaster University",
-    length: "1 month",
-    description:
-      "A scalable Tic Tac Toe implementation with variable board sizes and dynamic win conditions. Features modular OOP game logic and a responsive interactive UI with an adaptive rules engine for diverse board configurations.",
-    tech: ["Java"],
-    repo: "https://github.com/Ibrahim-Al-Omran",
-    highlight: "Adaptive rules engine that supports diverse board sizes and dynamic win conditions through modular OOP architecture.",
-    image: null,
-  },
-];
-
 export default function ProjectsPage() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-10 space-y-8">
-      <h1 className="text-3xl font-bold animate-fade-in-up" style={{ color: '#201201' }}>My Projects</h1>
+      <h1 className="text-3xl font-bold animate-fade-in-up" style={{ color: '#262727' }}>My Projects</h1>
       <div className="projects-grid">
         {projects.map((proj, index) => (
           <div
@@ -137,4 +34,3 @@ export default function ProjectsPage() {
     </main>
   );
 }
-

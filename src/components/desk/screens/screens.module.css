@@ -1,0 +1,45 @@
+.scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(32, 18, 1, 0.18);
+  border: 3.5px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+  min-height: 40px;
+}
+
+.scroll:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(32, 18, 1, 0.32);
+}
+
+.scroll::-webkit-scrollbar-thumb:hover,
+.scroll::-webkit-scrollbar-thumb:active {
+  background-color: rgba(32, 18, 1, 0.5);
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(32, 18, 1, 0.3) transparent;
+  }
+}
+
+.search::placeholder {
+  color: rgba(32, 18, 1, 0.42);
+}
+
+.search::-webkit-search-cancel-button {
+  display: none;
+}

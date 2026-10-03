@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
-import VantaBackground from "@/components/VantaBackground";
 import CursorDot from "@/components/CursorFollower";
+import TileIntro from "@/components/TileIntro";
 import Script from "next/script";
 import { Quattrocento } from "next/font/google";
 
@@ -94,8 +94,8 @@ export const metadata = {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "default",
     "google-site-verification": "your-verification-code",
-    "msapplication-TileColor": "#c1ddff",
-    "theme-color": "#c1ddff",
+    "msapplication-TileColor": "#faf9f2",
+    "theme-color": "#faf9f2",
   },
 };
 
@@ -103,7 +103,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#c1ddff",
+  themeColor: "#faf9f2",
 };
 
 export default function RootLayout({ children }) {
@@ -151,8 +151,8 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/ia_logo_512.png" type="image/png" />
         <link rel="apple-touch-icon" href="/ia_logo_512.png" />
-        <meta name="theme-color" content="#c1ddff" media="(prefers-color-scheme: dark)" />
-        <meta name="theme-color" content="#c1ddff" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#faf9f2" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#faf9f2" media="(prefers-color-scheme: light)" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Ibrahim Al Omran" />
@@ -160,16 +160,16 @@ export default function RootLayout({ children }) {
         <meta name="format-detection" content="telephone=no" />
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-TileColor" content="#c1ddff" />
+        <meta name="msapplication-TileColor" content="#faf9f2" />
         <meta name="msapplication-navbutton-color" content="#c1ddff" />
         <style dangerouslySetInnerHTML={{
           __html: `
             :root {
               color-scheme: light;
-              --safari-backdrop-color: #c1ddff;
+              --safari-backdrop-color: #faf9f2;
             }
             html {
-              background-color: #c1ddff !important;
+              background-color: #faf9f2 !important;
             }
             body {
               background: transparent !important;
@@ -183,7 +183,7 @@ export default function RootLayout({ children }) {
                 left: 0;
                 right: 0;
                 height: env(safe-area-inset-top, 44px);
-                background: linear-gradient(180deg, #c1ddff 0%, rgba(193, 221, 255, 0.95) 70%, rgba(193, 221, 255, 0.8) 100%);
+                background: linear-gradient(180deg, #faf9f2 0%, rgba(250, 249, 242, 0.95) 70%, rgba(250, 249, 242, 0.8) 100%);
                 z-index: 9999;
                 pointer-events: none;
                 backdrop-filter: blur(20px);
@@ -194,7 +194,7 @@ export default function RootLayout({ children }) {
             @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
               body {
                 background-attachment: fixed;
-                background-image: linear-gradient(0deg, transparent 0%, rgba(193, 221, 255, 0.1) 100%);
+                background-image: linear-gradient(0deg, transparent 0%, rgba(193, 221, 255, 0.12) 100%);
               }
             }
             
@@ -239,8 +239,8 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-        <VantaBackground />
         <CursorDot />
+        <TileIntro />
         <div
           className="min-h-screen relative"
           style={{
