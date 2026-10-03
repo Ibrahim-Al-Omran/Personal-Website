@@ -880,19 +880,15 @@ a svg, button svg, [role="button"] svg {
   }
 }
 
-.tile-intro[data-phase='out'] .tile-intro-tile {
-  animation: tile-glitch-out var(--dur) steps(1, end) var(--d) forwards;
-}
-
 @keyframes tile-glitch-out {
-  0% { opacity: 1; transform: translate(0, 0); }
-  14% { opacity: 1; transform: translate(var(--jx), 0); }
+  0% { opacity: 1; transform: translate(0, 0); background: var(--tile); }
+  14% { opacity: 1; transform: translate(var(--jx), 0); background: var(--tile); }
   24% { opacity: 0.35; background: var(--flash); transform: translate(var(--jx), var(--jy)); }
   36% { opacity: 1; background: var(--tile); transform: translate(0, 0); }
-  50% { opacity: 0; }
+  50% { opacity: 0; background: var(--tile); }
   62% { opacity: 0.75; background: var(--flash); transform: translate(calc(var(--jx) * -0.6), 0); }
-  74% { opacity: 0.4; background: var(--tile); transform: translate(0, 0) scale(0.85); animation-timing-function: ease-out; }
-  100% { opacity: 0; transform: scale(0.35); }
+  74% { opacity: 0.4; background: var(--tile); transform: translate(0, 0) scale(0.85); }
+  100% { opacity: 0; background: var(--tile); transform: scale(0.35); }
 }
 
 @keyframes tile-intro-fade {

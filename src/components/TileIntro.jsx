@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 const TILE_DURATION = 560;
 const SWEEP = 520;
 const SCATTER = 380;
-const MIN_COVER = 250;
-const MAX_WAIT = 1400;
+const MIN_COVER = 900;
+const MAX_WAIT = 1800;
 
 const SHADES = ['#c1ddff', '#c1ddff', '#b5d4f5', '#d0e6ff'];
 const FLASHES = ['#262727', '#faf9f2', '#8eb6e8'];
@@ -27,7 +27,9 @@ function buildTiles(width, height) {
   const cx = (cols - 1) / 2;
   const cy = (rows - 1) / 2;
   const maxDist = Math.hypot(cx, cy) || 1;
-  const rowShift = Array.from({ length: rows }, () => (Math.random() < 0.35 ? (Math.random() - 0.5) * size * 0.9 : 0));
+  const rowShift = Array.from({ length: rows }, () =>
+    Math.random() < 0.35 ? (Math.random() - 0.5) * size * 0.9 : 0
+  );
 
   const tiles = [];
   for (let r = 0; r < rows; r++) {
@@ -49,8 +51,11 @@ function buildTiles(width, height) {
 export default function TileIntro() {
   const [grid, setGrid] = useState(null);
   const [phase, setPhase] = useState('cover');
+  const mountedAt = useRef(0);
+  const leaving = useRef(false);
 
   useLayoutEffect(() => {
+    mountedAt.current = performance.now();
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setPhase('fade');
       return;
@@ -59,38 +64,66 @@ export default function TileIntro() {
     setGrid(buildTiles(width, height));
   }, []);
 
+  // Hold the tile cover, then play the out animation (works even when the
+  // document was already `complete` before hydration in production).
   useEffect(() => {
-    if (phase !== 'cover') return;
-    const mountedAt = performance.now();
+    if (phase !== 'cover' || !grid || leaving.current) return;
+
     let timer;
-    const start = () => {
-      window.removeEventListener('load', start);
-      clearTimeout(timer);
-      const wait = Math.max(0, MIN_COVER - (performance.now() - mountedAt));
-      timer = setTimeout(() => setPhase('out'), wait);
+    let raf = 0;
+
+    const beginOut = () => {
+      if (leaving.current) return;
+      leaving.current = true;
+      // Two frames so the static tile grid paints before animation styles attach.
+      raf = requestAnimationFrame(() => {
+        raf = requestAnimationFrame(() => setPhase('out'));
+      });
     };
-    if (document.readyState === 'complete') start();
-    else {
-      window.addEventListener('load', start);
-      timer = setTimeout(start, MAX_WAIT);
+
+    const tryStart = () => {
+      const elapsed = performance.now() - mountedAt.current;
+      const wait = Math.max(0, MIN_COVER - elapsed);
+      timer = window.setTimeout(beginOut, wait);
+    };
+
+    if (document.readyState === 'complete') {
+      tryStart();
+    } else {
+      const onLoad = () => {
+        window.removeEventListener('load', onLoad);
+        tryStart();
+      };
+      window.addEventListener('load', onLoad);
+      timer = window.setTimeout(() => {
+        window.removeEventListener('load', onLoad);
+        tryStart();
+      }, MAX_WAIT);
     }
+
     return () => {
-      window.removeEventListener('load', start);
-      clearTimeout(timer);
+      window.clearTimeout(timer);
+      cancelAnimationFrame(raf);
     };
-  }, [phase]);
+  }, [phase, grid]);
 
   useEffect(() => {
     if (phase !== 'out' && phase !== 'fade') return;
-    const total = phase === 'fade' ? 400 : SWEEP + SCATTER + TILE_DURATION + 80;
-    const timer = setTimeout(() => setPhase('done'), total);
-    return () => clearTimeout(timer);
+    const total = phase === 'fade' ? 420 : SWEEP + SCATTER + TILE_DURATION + 120;
+    const timer = window.setTimeout(() => setPhase('done'), total);
+    return () => window.clearTimeout(timer);
   }, [phase]);
 
   if (phase === 'done') return null;
 
   if (!grid) {
-    return <div aria-hidden="true" className="tile-intro tile-intro-solid" data-fade={phase === 'fade' || undefined} />;
+    return (
+      <div
+        aria-hidden="true"
+        className="tile-intro tile-intro-solid"
+        data-fade={phase === 'fade' || undefined}
+      />
+    );
   }
 
   return (
@@ -108,12 +141,20 @@ export default function TileIntro() {
           key={t.key}
           className="tile-intro-tile"
           style={{
+            background: t.shade,
             '--tile': t.shade,
             '--flash': t.flash,
             '--jx': `${t.jx}px`,
             '--jy': `${t.jy}px`,
-            '--d': `${t.delay}ms`,
-            '--dur': `${TILE_DURATION}ms`,
+            ...(phase === 'out'
+              ? {
+                  animationName: 'tile-glitch-out',
+                  animationDuration: `${TILE_DURATION}ms`,
+                  animationTimingFunction: 'steps(1, end)',
+                  animationDelay: `${t.delay}ms`,
+                  animationFillMode: 'forwards',
+                }
+              : null),
           }}
         />
       ))}
