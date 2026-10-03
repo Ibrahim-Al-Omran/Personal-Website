@@ -17,7 +17,7 @@ export const metadata = {
     template: "Ibrahim Al Omran | %s",
   },
   description:
-    "20-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects. View my portfolio and connect with me.",
+    "21 year old software engineer at McMaster University. Passionate about technology, coding, and building innovative projects. View my portfolio and connect with me.",
   keywords: [
     "Ibrahim Al Omran",
     "Software Engineering",
@@ -58,7 +58,7 @@ export const metadata = {
     url: "https://ibrahimalomran.com",
     title: "Ibrahim Al Omran",
     description:
-      "19-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects.",
+      "21 year old software engineer at McMaster University. Passionate about technology, coding, and building innovative projects.",
     siteName: "Ibrahim Al Omran",
     images: [
       {
@@ -73,7 +73,7 @@ export const metadata = {
     card: "summary",
     title: "Ibrahim Al Omran",
     description:
-      "19-year-old Software Engineering student at McMaster University. Passionate about technology, coding, and building innovative projects.",
+      "21 year old software engineer at McMaster University. Passionate about technology, coding, and building innovative projects.",
     images: ["https://ibrahimalomran.com/ia_logo_512.png"],
   },
   metadataBase: new URL("https://ibrahimalomran.com"),
@@ -111,7 +111,7 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Ibrahim Al Omran",
-    "jobTitle": "Software Engineering Student",
+    "jobTitle": "Software Engineer",
     "affiliation": {
       "@type": "EducationalOrganization",
       "name": "McMaster University",
@@ -123,7 +123,7 @@ export default function RootLayout({ children }) {
       "https://www.linkedin.com/in/ibrahim-al-omran/",
     ],
     "description":
-      "19-year-old Software Engineering student at McMaster University passionate about technology and building innovative projects.",
+      "21 year old software engineer at McMaster University passionate about technology and building innovative projects.",
     "knowsAbout": [
       "Software Engineering",
       "Web Development",

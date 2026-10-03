@@ -5,8 +5,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 const TILE_DURATION = 560;
 const SWEEP = 520;
 const SCATTER = 380;
-const MIN_COVER = 900;
-const MAX_WAIT = 1800;
+const MIN_COVER = 450;
+const MAX_WAIT = 1400;
 
 const SHADES = ['#c1ddff', '#c1ddff', '#b5d4f5', '#d0e6ff'];
 const FLASHES = ['#262727', '#faf9f2', '#8eb6e8'];
