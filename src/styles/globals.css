@@ -4,7 +4,7 @@
 /* Safari iOS 26+ Search Bar Compatibility */
 @supports (-webkit-appearance: none) and (not (display: -webkit-flex)) {
   html {
-    background: #c1ddff !important;
+    background: #bbe2bc !important;
     background-attachment: fixed;
   }
   
@@ -15,24 +15,12 @@
     left: 0;
     right: 0;
     height: env(safe-area-inset-top, 50px);
-    background: linear-gradient(180deg, #c1ddff 0%, rgba(193, 221, 255, 0.9) 100%);
+    background: linear-gradient(180deg, #bbe2bc 0%, rgba(187, 226, 188, 0.9) 100%);
     z-index: 9998;
     pointer-events: none;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
-}
-
-/* Enhanced Vanta background container for Safari compatibility */
-.vanta-background {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: -50;
-  background-color: #c1ddff;
-  background-attachment: fixed;
 }
 
 /* Reset margins and padding for html and body */
@@ -79,24 +67,24 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #c1ddff;
+  background: #ffffff;
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #c4a882, #a8896a);
+  background: #111111;
   border-radius: 6px;
-  border: 2px solid #c1ddff;
+  border: 2px solid #ffffff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #8a6b4a, #6b4e32);
+  background: #000000;
 }
 
-/* Firefox scrollbar styling */
+/* Standard scrollbar styling (Firefox, and Chrome 121+, where it takes precedence) */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #c4a882 #c1ddff;
+  scrollbar-color: #111111 #ffffff;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -177,7 +165,7 @@ body {
 }
 
 .dark {
-  --background: #c1ddff;
+  --background: #bbe2bc;
   --foreground: #201201;
   --card: #f5edd6;
   --card-foreground: #201201;
@@ -552,4 +540,83 @@ a svg, button svg, [role="button"] svg {
     }
   }
 
+}
+
+/* Desk scene: the click target over each unfocused monitor screen */
+.desk-screen-hit {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.07) 55%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.desk-screen-hit:hover,
+.desk-screen-hit:focus-visible {
+  opacity: 1;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  outline: none;
+}
+
+/* Load-in cover: a grid of tiles that glitch and dissipate once the page is ready. */
+.tile-intro {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  min-height: -webkit-fill-available;
+  z-index: 10050;
+  display: grid;
+  overflow: hidden;
+  pointer-events: auto;
+  background: transparent;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.tile-intro-solid {
+  background: #bbe2bc;
+}
+
+.tile-intro-solid[data-fade] {
+  animation: tile-intro-fade 400ms ease-out forwards;
+}
+
+.tile-intro[data-phase='out'] {
+  pointer-events: none;
+}
+
+.tile-intro-tile {
+  background: var(--tile);
+  box-shadow: inset 0 0 0 0.5px rgba(32, 18, 1, 0.07);
+}
+
+@media (max-width: 767px) {
+  .tile-intro-tile {
+    box-shadow: inset 0 0 0 1px rgba(32, 18, 1, 0.14);
+  }
+}
+
+.tile-intro[data-phase='out'] .tile-intro-tile {
+  animation: tile-glitch-out var(--dur) steps(1, end) var(--d) forwards;
+}
+
+@keyframes tile-glitch-out {
+  0% { opacity: 1; transform: translate(0, 0); }
+  14% { opacity: 1; transform: translate(var(--jx), 0); }
+  24% { opacity: 0.35; background: var(--flash); transform: translate(var(--jx), var(--jy)); }
+  36% { opacity: 1; background: var(--tile); transform: translate(0, 0); }
+  50% { opacity: 0; }
+  62% { opacity: 0.75; background: var(--flash); transform: translate(calc(var(--jx) * -0.6), 0); }
+  74% { opacity: 0.4; background: var(--tile); transform: translate(0, 0) scale(0.85); animation-timing-function: ease-out; }
+  100% { opacity: 0; transform: scale(0.35); }
+}
+
+@keyframes tile-intro-fade {
+  to { opacity: 0; }
+}
+
+/* Low-end devices: frosted glass inside the screens becomes plain translucency. */
+.desk-scene[data-quality='lite'] * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
