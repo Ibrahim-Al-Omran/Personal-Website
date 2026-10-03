@@ -1,15 +1,16 @@
-import HomeCard from "@/components/HomeCard";
-import DeskScene from "@/components/desk/DeskScene";
+'use client';
+
+import { Suspense } from 'react';
+import HomeShell from '@/components/HomeShell';
+
+function LandingFallback() {
+  return <div className="exp-stage" style={{ background: '#faf9f2' }} aria-hidden />;
+}
 
 export default function Home() {
   return (
-    <>
-      <div className="hidden md:block">
-        <DeskScene />
-      </div>
-      <div className="md:hidden">
-        <HomeCard />
-      </div>
-    </>
+    <Suspense fallback={<LandingFallback />}>
+      <HomeShell />
+    </Suspense>
   );
 }

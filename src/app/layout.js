@@ -94,8 +94,8 @@ export const metadata = {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "default",
     "google-site-verification": "your-verification-code",
-    "msapplication-TileColor": "#bbe2bc",
-    "theme-color": "#bbe2bc",
+    "msapplication-TileColor": "#faf9f2",
+    "theme-color": "#faf9f2",
   },
 };
 
@@ -103,7 +103,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#bbe2bc",
+  themeColor: "#faf9f2",
 };
 
 export default function RootLayout({ children }) {
@@ -151,8 +151,8 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/ia_logo_512.png" type="image/png" />
         <link rel="apple-touch-icon" href="/ia_logo_512.png" />
-        <meta name="theme-color" content="#bbe2bc" media="(prefers-color-scheme: dark)" />
-        <meta name="theme-color" content="#bbe2bc" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#faf9f2" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#faf9f2" media="(prefers-color-scheme: light)" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Ibrahim Al Omran" />
@@ -160,16 +160,16 @@ export default function RootLayout({ children }) {
         <meta name="format-detection" content="telephone=no" />
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-TileColor" content="#bbe2bc" />
-        <meta name="msapplication-navbutton-color" content="#bbe2bc" />
+        <meta name="msapplication-TileColor" content="#faf9f2" />
+        <meta name="msapplication-navbutton-color" content="#c1ddff" />
         <style dangerouslySetInnerHTML={{
           __html: `
             :root {
               color-scheme: light;
-              --safari-backdrop-color: #bbe2bc;
+              --safari-backdrop-color: #faf9f2;
             }
             html {
-              background-color: #bbe2bc !important;
+              background-color: #faf9f2 !important;
             }
             body {
               background: transparent !important;
@@ -183,7 +183,7 @@ export default function RootLayout({ children }) {
                 left: 0;
                 right: 0;
                 height: env(safe-area-inset-top, 44px);
-                background: linear-gradient(180deg, #bbe2bc 0%, rgba(187, 226, 188, 0.95) 70%, rgba(187, 226, 188, 0.8) 100%);
+                background: linear-gradient(180deg, #faf9f2 0%, rgba(250, 249, 242, 0.95) 70%, rgba(250, 249, 242, 0.8) 100%);
                 z-index: 9999;
                 pointer-events: none;
                 backdrop-filter: blur(20px);
@@ -194,7 +194,7 @@ export default function RootLayout({ children }) {
             @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
               body {
                 background-attachment: fixed;
-                background-image: linear-gradient(0deg, transparent 0%, rgba(187, 226, 188, 0.1) 100%);
+                background-image: linear-gradient(0deg, transparent 0%, rgba(193, 221, 255, 0.12) 100%);
               }
             }
             

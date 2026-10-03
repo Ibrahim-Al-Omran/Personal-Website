@@ -8,8 +8,8 @@ const SCATTER = 380;
 const MIN_COVER = 250;
 const MAX_WAIT = 1400;
 
-const SHADES = ['#bbe2bc', '#bbe2bc', '#b2dcb3', '#c6e8c7'];
-const FLASHES = ['#201201', '#f4fbf4', '#8fc792'];
+const SHADES = ['#c1ddff', '#c1ddff', '#b5d4f5', '#d0e6ff'];
+const FLASHES = ['#262727', '#faf9f2', '#8eb6e8'];
 
 function viewportSize() {
   const vv = window.visualViewport;

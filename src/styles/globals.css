@@ -4,7 +4,7 @@
 /* Safari iOS 26+ Search Bar Compatibility */
 @supports (-webkit-appearance: none) and (not (display: -webkit-flex)) {
   html {
-    background: #bbe2bc !important;
+    background: #faf9f2 !important;
     background-attachment: fixed;
   }
   
@@ -15,7 +15,7 @@
     left: 0;
     right: 0;
     height: env(safe-area-inset-top, 50px);
-    background: linear-gradient(180deg, #bbe2bc 0%, rgba(187, 226, 188, 0.9) 100%);
+    background: linear-gradient(180deg, #faf9f2 0%, rgba(250, 249, 242, 0.9) 100%);
     z-index: 9998;
     pointer-events: none;
     backdrop-filter: blur(10px);
@@ -165,20 +165,20 @@ body {
 }
 
 .dark {
-  --background: #bbe2bc;
-  --foreground: #201201;
+  --background: #faf9f2;
+  --foreground: #262727;
   --card: #f5edd6;
-  --card-foreground: #201201;
+  --card-foreground: #262727;
   --popover: #f5edd6;
-  --popover-foreground: #201201;
-  --primary: #201201;
-  --primary-foreground: #fffef3;
-  --secondary: #ede5cc;
-  --secondary-foreground: #201201;
-  --muted: #ede5cc;
-  --muted-foreground: rgba(32, 18, 1, 0.6);
-  --accent: #ede5cc;
-  --accent-foreground: #201201;
+  --popover-foreground: #262727;
+  --primary: #262727;
+  --primary-foreground: #faf9f2;
+  --secondary: #c1ddff;
+  --secondary-foreground: #262727;
+  --muted: #e8e6dc;
+  --muted-foreground: rgba(38, 39, 39, 0.6);
+  --accent: #c1ddff;
+  --accent-foreground: #262727;
   --destructive: oklch(0.704 0.191 22.216);
   --border: rgba(32, 18, 1, 0.15);
   --input: rgba(32, 18, 1, 0.12);
@@ -542,6 +542,290 @@ a svg, button svg, [role="button"] svg {
 
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Experience landing + highway cutout */
+.highway-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.exp-stage {
+  --exp-cell: 48px;
+  --exp-ink: #262727;
+  --exp-accent: #c1ddff;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: transparent;
+  overflow-x: hidden;
+}
+
+.exp-main {
+  animation: exp-fade-in 480ms ease-out both;
+}
+
+.exp-cutout {
+  background: #faf9f2;
+  border: 1px solid rgba(38, 39, 39, 0.08);
+  border-radius: 4px;
+  padding: 28px 22px 32px;
+  box-shadow: none;
+}
+
+@media (min-width: 640px) {
+  .exp-cutout {
+    padding: 36px 40px 40px;
+  }
+}
+
+@keyframes exp-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.exp-cta {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #262727;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(38, 39, 39, 0.28);
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.exp-cta:hover {
+  color: #262727;
+  text-decoration-color: #c1ddff;
+}
+
+.exp-cta:focus-visible {
+  outline: 2px solid rgba(193, 221, 255, 0.9);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.exp-socials a.exp-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 0;
+  gap: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #262727;
+  transition: color 150ms ease, opacity 150ms ease;
+}
+
+.exp-socials a.exp-icon:hover {
+  background: transparent;
+  color: #262727;
+  opacity: 0.55;
+}
+
+.exp-socials a.exp-icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  stroke: currentColor;
+  fill: none;
+}
+
+.exp-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  border-bottom: 0.5px solid rgba(38, 39, 39, 0.12);
+}
+
+.exp-tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: rgba(38, 39, 39, 0.45);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  padding: 8px 14px 10px;
+  margin-bottom: -0.5px;
+  cursor: pointer;
+  border-bottom: 1.5px solid transparent;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+
+.exp-tab:hover {
+  color: rgba(38, 39, 39, 0.7);
+}
+
+.exp-tab.is-active {
+  color: #262727;
+  border-bottom-color: #c1ddff;
+}
+
+.exp-tab:focus-visible {
+  outline: 2px solid rgba(193, 221, 255, 0.8);
+  outline-offset: 2px;
+}
+
+.exp-list {
+  border-top: none;
+}
+
+.exp-row {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  border-bottom: 0.5px solid rgba(38, 39, 39, 0.1);
+}
+
+@media (min-width: 640px) {
+  .exp-row {
+    grid-template-columns: var(--exp-cell) 1fr;
+  }
+}
+
+.exp-year {
+  padding: 14px 0 0 4px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(38, 39, 39, 0.45);
+}
+
+.exp-row-body {
+  min-width: 0;
+}
+
+.exp-link {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 14px 8px 12px;
+  text-align: left;
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  transition: background 75ms ease-out;
+}
+
+.exp-link:hover {
+  background: rgba(193, 221, 255, 0.28);
+}
+
+.exp-link:hover .exp-arrow svg {
+  color: #262727 !important;
+}
+
+@media (min-width: 640px) {
+  .exp-link {
+    display: grid;
+    grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.6fr) minmax(0, 1.4fr) 1.5rem;
+    align-items: start;
+    gap: 0;
+    padding: 14px 0 12px;
+  }
+}
+
+.exp-name {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .exp-name {
+    flex: none;
+    padding-left: 8px;
+  }
+
+  .exp-detail,
+  .exp-dates,
+  .exp-arrow {
+    padding-left: 8px;
+  }
+}
+
+.exp-detail {
+  max-width: 42%;
+  text-align: right;
+  font-size: 11px;
+}
+
+@media (min-width: 640px) {
+  .exp-detail {
+    max-width: none;
+    text-align: left;
+    font-size: 12px;
+  }
+}
+
+.exp-panel-body {
+  padding: 0 8px 14px;
+}
+
+@media (min-width: 640px) {
+  .exp-panel-body {
+    padding: 0 8px 16px 8px;
+  }
+}
+
+.exp-blurb {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  max-width: 36rem;
+}
+
+.exp-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #262727;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(38, 39, 39, 0.28);
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.exp-visit:hover {
+  text-decoration-color: #c1ddff;
+}
+
 /* Desk scene: the click target over each unfocused monitor screen */
 .desk-screen-hit {
   background: linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.07) 55%, rgba(255, 255, 255, 0) 70%);
@@ -574,7 +858,7 @@ a svg, button svg, [role="button"] svg {
 }
 
 .tile-intro-solid {
-  background: #bbe2bc;
+  background: #c1ddff;
 }
 
 .tile-intro-solid[data-fade] {

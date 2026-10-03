@@ -95,7 +95,7 @@ export default function CursorFollower() {
       transition={{ opacity: { duration: 0.2 } }}
     >
       <motion.div
-        style={{ backgroundColor: '#201201' }}
+        style={{ backgroundColor: '#262727' }}
         animate={
           onText
             ? { width: pressed ? 2 : 5, height: 20, borderRadius: 2, scale: 1 }

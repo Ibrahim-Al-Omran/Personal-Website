@@ -8,7 +8,7 @@ export const metadata = {
 export default function ProjectsPage() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-10 space-y-8">
-      <h1 className="text-3xl font-bold animate-fade-in-up" style={{ color: '#201201' }}>My Projects</h1>
+      <h1 className="text-3xl font-bold animate-fade-in-up" style={{ color: '#262727' }}>My Projects</h1>
       <div className="projects-grid">
         {projects.map((proj, index) => (
           <div
